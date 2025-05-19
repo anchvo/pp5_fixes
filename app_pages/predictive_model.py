@@ -1,26 +1,34 @@
 import streamlit as st
 import pandas as pd
-from src.machine_learning.predictive_analysis import make_prediction
+import matplotlib.pyplot as plt
+import seaborn as sns
+from src.machine_learning.predictive_analysis import make_prediction, model
+
+class_labels = {0: "Adware", 1: "SMS Malware", 2: "Scareware", 3: "Benign"}
 
 
 def predictive_model_body():
     st.header("🧠 Malware Threat Predictor")
 
-    st.markdown("Enter the characteristics of the app below to predict its **threat level**.")
+    st.title("Threat Level Prediction by Class")
 
-    # Example features — replace with actual feature names
-    feature_1 = st.number_input("Permission Score", min_value=0.0, value=1.0)
-    feature_2 = st.number_input("App Size (MB)", min_value=0.0, value=10.0)
-    feature_3 = st.number_input("Request Count", min_value=0, value=5)
+    selected_class_name = st.selectbox("Select Threat Class", list(class_labels.values()))
+    selected_class_num = [k for k, v in class_labels.items() if v == selected_class_name][0]
 
-    if st.button("Predict Threat Level"):
-        input_df = pd.DataFrame({
-            "feature_1": [feature_1],
-            "feature_2": [feature_2],
-            "feature_3": [feature_3]
-        })
+    st.write(f"You selected: **{selected_class_name}**")
 
-        prediction = make_prediction(input_df)
-        st.success(f"Predicted Threat Level: **{prediction}**")
+    # Load preprocessed test set features for demonstration
+    X_test_scaled = pd.read_csv("outputs/data/X_test_scaled.csv")
 
-        st.markdown("🔐 Based on the input, you may want to **restrict permissions**, **investigate the APK**, or **flag the app for deeper analysis**.")
+    threat_level = make_prediction(X_test_scaled, selected_class_num)
+
+    st.markdown(f"### Average predicted threat level for **{selected_class_name}** in test set:")
+    st.metric(label="Threat Probability", value=f"{threat_level:.2%}")
+
+    plt.figure(figsize=(8, 4))
+    proba = model.predict_proba(X_test_scaled) 
+    sns.histplot(proba[:, selected_class_num], bins=30, kde=True)
+    plt.title(f"Distribution of predicted probabilities for {selected_class_name}")
+    plt.xlabel("Predicted Probability")
+    plt.ylabel("Number of Samples")
+    st.pyplot(plt)

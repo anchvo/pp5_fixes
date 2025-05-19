@@ -3,8 +3,24 @@ from PIL import Image
 import os
 
 
-def model_evaluation_body():
-    st.header("📊 Model Evaluation")
+def project_evaluation_body():
+    st.header("📊 Project Evaluation")
+    
+    st.markdown("""
+    The **Project Evaluation** dashboard explains the development process in more technical detail and with a focus on modelling!
+
+    **Development**:
+    The development process followed the CRISP-DM workflow:
+                
+    - Business Understanding
+    - Data Understanding
+    - Data Preparation
+    - Modelling 
+    - Evaluation
+    - Deployment
+
+    Navigate using the sidebar to explore different components of the project.
+    """)
 
     st.markdown("These plots help explain the model development process and performance across stages.")
 
