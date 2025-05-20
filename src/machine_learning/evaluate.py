@@ -1,4 +1,14 @@
-from sklearn.metrics import classification_report
+import pandas as pd
+from pathlib import Path
 
-def generate_classification_report(y_true, y_pred, output_dict=False):
-    return classification_report(y_true, y_pred, output_dict=output_dict)
+# Paths
+evaluation_path = Path("outputs") / "evaluation"
+
+# Load evaluation data CSV and return tidy DataFrame.
+def load_evaluation_data(evaluation_path):
+    try:
+        df = pd.read_csv(evaluation_path)
+        return df
+    except FileNotFoundError:
+        print(f"File not found: {evaluation_path}")
+        return pd.DataFrame()

@@ -1,5 +1,3 @@
-import base64
-import os
 import streamlit as st
 import pandas as pd
 import seaborn as sns
@@ -8,7 +6,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 from streamlit.components.v1 import html
-from src.data_management import load_data, load_prep_data, load_raw_data
+from src.data_management import load_prep_data, load_raw_data
 
 
 def eda_body():
