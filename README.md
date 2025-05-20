@@ -2,22 +2,7 @@
 
 The Android Malware Threat Predictor is a data app with a Streamlit dashboard that can predict threat levels for certain types of malware. At the heart of the app, a machine learning algorithm trained on a dataset, predicts threat levels for Adware, Scareware, SMS Malware and Benign on Android devices. 
 
-The live website link can be found here ![Android Malware Threat Predictor]()
-
-
-## Cloud IDE Reminders
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
+The live website link can be found here ![Android Malware Threat Predictor](https://pp5-android-malware-detector.onrender.com)
 
 ## Dataset Content
 The Dataset is sourced from ![Kaggle - Android Malware Detection](https://www.kaggle.com/datasets/subhajournal/android-malware-detection). It was chosen based on the business case and the idea to create an Andorid Malware Predictor. The dataset separates the types of malware into four labels -  Android_Adware, Android_Scareware, Android_SMS_Malware and Benign - which fit well with the wish to predict types of malware. At the time of access, the dataset consisted of 355630 entries or instances (rows) with 85 columns and had the following label distribution: 
@@ -27,7 +12,7 @@ Android_Scareware => 117082
 Android_SMS_Malware => 67397
 Benign => 23708
 
-After choosing the dataset and conducting further analysis on the data, it was found that the other variables - features - were quite technical in origin and not easy to understand which led to some challenges and complications that are explained in more detail later. 
+After choosing the dataset and conducting further analysis on the data, it was found that the other variables - features - were quite technical in origin and not easy to understand which led to some challenges and complications in working with the data. 
 
 ## Business Requirements
 As a Data Scientist working with cybersecurity stakeholders, you are tasked with developing a predictive system to classify Android applications into malware categories. The client — a cybersecurity firm — seeks to automate malware threat detection and gain insights on prevalent malware types to enhance security monitoring and response strategies.
@@ -117,21 +102,32 @@ Classification Model
 
 ### Page 1: Project Summary
 * Quick project summary
-    * Describe Project Dataset
-    * State Business Requirements & Hypothesis
+    * Describe project dataset
+    * State business requirements & hypotheses
+    * Link readme file
 
 ### Page 2: Exploratory Data Analysis
 * Overview of overall data analysis
-        * State business requirement 1
-        * Display class distribution 
-        * Display correlation 
-        * State conclusion and next Steps taken
+    * Explain purpose
+    * Display EDA visualisations 
+    * State conclusion 
+    * Answer business requirements & hypotheses if possible
 
 ### Page 3: Malware Threat Predictor
-* Widget inputs for interactive prediction models
-        * State business requirement 2
-        * Inputs relating to a given ML task to predict threat level of malware class
-    * Before the model development, it was planned to include inputs for features to predict the threat of malware infiltration (classes). The new data should be served to the ML pipeline which then predicted the probability of types of malware infiltration. Currently, this is not included due to the current model not reaching required accuracy to prevent from leading to false predictions. 
+* Overview of model development
+    * Explain purpose
+    * Display prediction model functionality with: 
+        * Interactive threat level prediction for types of malware
+        * Interactive threat type prediction for feature inputs
+    * State conclusion 
+    * Answer business requirements & hypotheses if possible
+
+### Page 4: Project Evaluation
+* Overview of project evaluation
+    * Explain purpose
+    * Display evaluation visualisations 
+    * State conclusion 
+    * Answer business requirements & hypotheses if possible
 
 ## Bugs
 
@@ -155,10 +151,6 @@ Classification Model
 * Rounding issues: 
     * When running the EvaluateMissingData function, rounding settings
  
-## Challenges and Complications
-
-
-
 ## Further Improvements
 
 ### Model Enhancement
@@ -172,19 +164,17 @@ Classification Model
 * Possibly refactor code functions into separate python files to allow access from all directories and notebooks
 
 ## Deployment
+
+### Render
+
+* The app was deployed on Render, with the live link found here [Android Malware Threat Predictor](https://pp5-android-malware-detector.onrender.com)
+* The following guides from Code Institute were followed for the deployment steps:
+    * Creating an account on Render [CI Render Account Creation Guide](https://code-institute-students.github.io/deployment-docs/03-render/render-01-sign-up)
+    * Deploying app on Render [CI Render App Deployment Guide](https://code-institute-students.github.io/deployment-docs/42-pp5-pa/pp5-pa-01-preparing-for-render)
+
 ### Heroku
 
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
-* Set the runtime.txt Python version to a [Heroku-24](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
-
-1. Log in to Heroku and create an App
-2. At the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
-
+* Originally the app was supposed to be deployed via Heroku. Due to large file contraints, this was not possible.
 
 ## Main Data Analysis and Machine Learning Libraries
 * [Imblearn](https://imbalanced-learn.org/stable/): Used for SMOTE 
