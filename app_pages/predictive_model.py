@@ -1,6 +1,4 @@
 import streamlit as st
-st.set_page_config(page_title="Malware Threat Predictor", layout="wide")
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns

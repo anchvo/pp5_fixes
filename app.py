@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.set_page_config(page_title="Android Malware Threat Predictor", page_icon="🛡️")
+
 from app_pages import multipage
 
 from app_pages.project_summary import project_summary_body
