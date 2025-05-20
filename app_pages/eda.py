@@ -144,7 +144,7 @@ def eda_body():
     # Business Requirements and Hypotheses Conclusions
     st.success(
         f"**Answers to Business Requirements and Hypotheses**\n"
-        f"* \n"
-        f"* \n"
-        f"* \n"
+        f"* The dataset includes four malware categories (Adware, Scareware, SMS Malware, Benign), fulfilling the client's requirement for categorized malware analysis.\n"
+        f"* Exploratory data analysis revealed distinct feature distributions across classes, suggesting that behavioral patterns of malware are present and can be leveraged.\n"
+        f"* Feature correlation and importance analysis indicate that several features (e.g., flow duration, source/destination port) strongly influence class separability, supporting the hypothesis that malware behavior can be mapped via static features.\n"
     )

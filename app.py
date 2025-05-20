@@ -1,6 +1,6 @@
 import streamlit as st
 
-from app_pages import multipage, project_evaluation
+from app_pages import multipage
 
 from app_pages.project_summary import project_summary_body
 from app_pages.eda import eda_body

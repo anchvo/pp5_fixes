@@ -117,7 +117,7 @@ def project_evaluation_body():
     # Business Requirements and Hypotheses Conclusions
     st.success(
         f"**Answers to Business Requirements and Hypotheses**\n"
-        f"* \n"
-        f"* \n"
-        f"* \n"
+        f"* The final model delivers a functional prototype for class-based malware classification, but does not meet real-world readiness standards due to limited generalization and low balanced accuracy.\n"
+        f"* Hypothesis regarding feature-driven classification was validated, though not with high predictive power; key features remain consistent indicators of class but are insufficient alone for robust classification.\n"
+        f"* Probability-based outputs offer insight into potential thresholds, but real-world decision-making would require more reliable probability calibration and expert-driven tuning.\n"
     )
