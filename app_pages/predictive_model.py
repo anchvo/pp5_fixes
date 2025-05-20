@@ -31,7 +31,7 @@ def predictive_model_body():
     st.write(f"You selected: **{selected_class_name}**")
 
     # Load preprocessed test set features for demonstration
-    X_test_scaled = pd.read_csv("outputs/data/X_test_scaled.csv")
+    X_test_scaled = pd.read_csv("outputs/data/X_test_scaled.csv.gz", compression='gzip')
 
     threat_level = make_prediction(X_test_scaled, selected_class_num)
 

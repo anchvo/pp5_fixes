@@ -1,6 +1,7 @@
 import os
 import streamlit as st
 import plotly.express as px
+from pathlib import Path
 from src.machine_learning.evaluate import load_evaluation_data
 
 
@@ -61,10 +62,10 @@ def project_evaluation_body():
 
     # --- Define CSVs and labels --- 
     evaluations = {
-        "🔹 Baseline Models": "outputs/evaluation/model_training_results.csv",
-        "🔸 Hyperparameter Tuning": "outputs/evaluation/model_tuning_results.csv",
-        "🔸 Feature Engineering": "outputs/evaluation/best_model_fe_results.csv",
-        "🏁 Final Model Performance": "outputs/evaluation/best_model_final_results.csv"
+        "Baseline Models": Path("outputs/evaluation/model_training_results.csv.gz"),
+        "🔸Hyperparameter Tuning": Path("outputs/evaluation/model_tuning_results.csv.gz"),
+        "🔸Feature Engineering": Path("outputs/evaluation/best_model_fe_results.csv.gz"),
+        "🏁 Test Set Model Performance": Path("outputs/evaluation/best_model_final_results.csv.gz")
     }
 
     # --- Streamlit Tabs --- 
@@ -96,7 +97,6 @@ def project_evaluation_body():
                 st.plotly_chart(fig)
 
                 st.caption("Higher scores indicate better model performance. Balanced Accuracy and F1 scores help when handling class imbalance.")
-
 
     # General Development Evaluation 
     st.info(

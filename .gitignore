@@ -9,5 +9,13 @@ node_modules/
 cloudinary_python.txt
 kaggle.json
 .venv
-inputs/datasets/raw/
-outputs
+inputs/datasets/raw/Android_Malware.csv
+outputs/evaluation/best_model_fe_results.csv
+outputs/evaluation/best_model_final_results.csv
+outputs/evaluation/model_training_results.csv
+outputs/evaluation/model_tuning_results.csv
+outputs/data/*
+!outputs/data/Android_Malware_converted.csv.gz
+!outputs/data/X_test_scaled.csv.gz
+outputs/ml_pipeline/*
+!outputs/ml_pipeline/default_best_model.pkl.gz

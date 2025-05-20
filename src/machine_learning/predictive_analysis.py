@@ -1,11 +1,16 @@
-import joblib
 import pandas as pd
+import compress_pickle as cpickle
+from pathlib import Path
 
 
-model = joblib.load("outputs/ml_pipeline/default_best_model.pkl")
+# Define model path
+model_path = Path("outputs/ml_pipeline/default_best_model.pkl.gz")
 
-# Load features from X_train_scaled.csv
-FEATURE_COLUMNS = pd.read_csv("outputs/data/X_train_scaled.csv", nrows=1).columns.tolist()
+# Load compressed model
+model = cpickle.load(model_path, compression="gzip")
+
+# Load features from X_train_scaled.csv.gz
+FEATURE_COLUMNS = pd.read_csv("outputs/data/X_test_scaled.csv.gz", compression='gzip', nrows=1).columns.tolist()
 
 
 # Predict threat level with selected class input
