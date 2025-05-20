@@ -3,6 +3,8 @@ import streamlit as st
 
 def project_summary_body():
     st.header("📌 Project Summary")
+
+    # Page Explanation
     st.markdown("""
     Welcome to the **Android Malware Threat Predictor** dashboard!
 
@@ -13,7 +15,7 @@ def project_summary_body():
     Navigate using the sidebar to explore different components of the project.
     """)
 
-    # Glossary and dataset content
+    # Glossary and Dataset Content
     st.info(
         f"**Project Terms & Jargon**\n"
         f"* A **malware sample** refers to a software entity known or suspected to perform malicious actions.\n"
@@ -24,7 +26,7 @@ def project_summary_body():
         f"Each record includes static or behavioral features extracted from app activity and system interactions."
     )
 
-    # Hypothesis
+    # Hypotheses
     st.warning(
         f"**Project Hypotheses**\n"
         f"* Certain static or behavioral features in Android apps correlate with specific malware types, enabling accurate classification.\n"
