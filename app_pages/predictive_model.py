@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from src.machine_learning.predictive_analysis import make_prediction, model, predict_class_from_input
+from src.machine_learning.predictive_analysis import load_model, make_prediction, predict_class_from_input
 
 class_labels = {0: "Adware", 1: "SMS Malware", 2: "Scareware", 3: "Benign"}
 
@@ -22,6 +22,8 @@ st.markdown("""
 
 
 def predictive_model_body():
+
+    model = load_model()
 
     st.title("Threat Level Prediction by Class")
 
