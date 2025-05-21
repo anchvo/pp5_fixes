@@ -1,17 +1,25 @@
 import pandas as pd
 import compress_pickle as cpickle
+import streamlit as st
 from pathlib import Path
+
+
+# Cache the model loading as a resource
+@st.cache_resource
+def load_model():
+    model_path = Path("outputs/ml_pipeline/default_best_model.pkl.gz")
+    return cpickle.load(model_path, compression="gzip")
+
+
+# Cache the feature column loading as data
+@st.cache_data
+def load_feature_columns():
+    return pd.read_csv("outputs/data/X_test_scaled.csv.gz", compression='gzip', nrows=1).columns.tolist()
 
 
 # Predict threat level with selected class input
 def make_prediction(X_input: pd.DataFrame, selected_class_num: int) -> float:
-
-    # Define model path
-    model_path = Path("outputs/ml_pipeline/default_best_model.pkl.gz")
-
-    # Load compressed model
-    model = cpickle.load(model_path, compression="gzip")
-
+    model = load_model()
     proba = model.predict_proba(X_input)
     threat_level = proba[:, selected_class_num].mean()
     return threat_level
@@ -19,15 +27,8 @@ def make_prediction(X_input: pd.DataFrame, selected_class_num: int) -> float:
 
 # Predict the malware class and probabilities from user input
 def predict_class_from_input(user_input_df: pd.DataFrame):
-
-    # Define model path
-    model_path = Path("outputs/ml_pipeline/default_best_model.pkl.gz")
-
-    # Load compressed model
-    model = cpickle.load(model_path, compression="gzip")
-
-    # Load features from X_train_scaled.csv.gz
-    FEATURE_COLUMNS = pd.read_csv("outputs/data/X_test_scaled.csv.gz", compression='gzip', nrows=1).columns.tolist()
+    model = load_model()
+    FEATURE_COLUMNS = load_feature_columns()
 
     # Create full feature row with default 0s
     full_input = pd.DataFrame(columns=FEATURE_COLUMNS)

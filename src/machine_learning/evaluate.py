@@ -1,11 +1,13 @@
 import pandas as pd
+import streamlit as st
 from pathlib import Path
 
 # Paths
 evaluation_path = Path("outputs") / "evaluation"
 
 
-# Load evaluation data CSV and return tidy DataFrame.
+# Cached function to load evaluation data
+@st.cache_data
 def load_evaluation_data(evaluation_path):
     try:
         df = pd.read_csv(evaluation_path, compression='gzip')
