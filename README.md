@@ -1,8 +1,31 @@
-# ![Android Malware Threat Predictor]()
+# ![Android Malware Threat Predictor](https://pp5-android-malware-predictor.onrender.com)
 
 The Android Malware Threat Predictor is a data app with a Streamlit dashboard that can predict threat levels for certain types of malware. At the heart of the app, a machine learning algorithm trained on a dataset, predicts threat levels for Adware, Scareware, SMS Malware and Benign on Android devices. 
 
-The live website link can be found here ![Android Malware Threat Predictor](https://pp5-android-malware-detector.onrender.com)
+The live website link can be found here ![Android Malware Threat Predictor](https://pp5-android-malware-predictor.onrender.com)
+
+## Update Notice
+
+This repository was created as a copy of the original [Android Malware Threat Detector](https://github.com/anchvo/pp5_android_malware_detector) via GitHub import. This was done to work on a solution with a not functioning deployment link for the original. 
+
+Steps taken for fixing the issue: 
+
+* Add 07 - CompressFiles.ipynb for writing the code to compress existing and needed .csv and .pkl files with gzip
+* Adjust file paths to new compressed file versions for streamlit app files in app_pages and src folders
+* Use Git LFS to track new .csv.gz and .pkl.gz files for larger file upload to GitHub which created new .gitattributes file
+* Adjust .gitignore file to ignore uncompressed files but include compressed files
+* Adjust requirements.txt to include new dependency for compress_pickle and comment out dependencies not needed for deployment on render
+* Remove unnecessary Procfile
+* Deploy to render
+
+Still persisting memory exceeded issue with render deployment: 
+
+* Move model and csv loads into functions in streamlit pages 
+* Add streamlit cache decorators, 
+* Remove unnecessary imports and use lazy imports
+* Package matplotlib font cache
+* Change render plan from free to Standard (1GB CPU, 2GB RAM)
+* App loads correctly except for Malware Threat Detector Page that runs the prediction model, which still leads to memory exceeded issue
 
 ## Dataset Content
 The Dataset is sourced from ![Kaggle - Android Malware Detection](https://www.kaggle.com/datasets/subhajournal/android-malware-detection). It was chosen based on the business case and the idea to create an Andorid Malware Predictor. The dataset separates the types of malware into four labels -  Android_Adware, Android_Scareware, Android_SMS_Malware and Benign - which fit well with the wish to predict types of malware. At the time of access, the dataset consisted of 355630 entries or instances (rows) with 85 columns and had the following label distribution: 
@@ -167,7 +190,7 @@ Classification Model
 
 ### Render
 
-* The app was deployed on Render, with the live link found here [Android Malware Threat Predictor](https://pp5-android-malware-detector.onrender.com)
+* The app was deployed on Render, with the live link found here [Android Malware Threat Predictor](https://pp5-android-malware-predictor.onrender.com)
 * The following guides from Code Institute were followed for the deployment steps:
     * Creating an account on Render [CI Render Account Creation Guide](https://code-institute-students.github.io/deployment-docs/03-render/render-01-sign-up)
     * Deploying app on Render [CI Render App Deployment Guide](https://code-institute-students.github.io/deployment-docs/42-pp5-pa/pp5-pa-01-preparing-for-render)
